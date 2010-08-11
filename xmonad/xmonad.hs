@@ -7,7 +7,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
--- import XMonad.Util.Scratchpad
+import XMonad.Util.Scratchpad
 import System.IO
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.ManageHelpers
@@ -23,6 +23,9 @@ myManageHook = composeAll
                ] 
                <+> 
                composeOne [ isFullscreen -?> doFullFloat ]
+	       <+>
+	       scratchpadManageHookDefault	--import scratchpad
+
 
 main = do
     xmproc <- spawnPipe "xmobar /home/skiff/.xmobarrc"
@@ -43,9 +46,11 @@ main = do
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s") -- print --> screenshot
         , ((0, xK_Print), spawn "scrot")
         , ((mod4Mask .|. shiftMask, xK_Home), fullFloatFocused)
-	, ((0, 0x1008ff11), spawn "cmus-remote -v -4")
-        , ((0, 0x1008ff13), spawn "cmus-remote -v +4")
-        , ((0, 0x1008ff14), spawn "cmus-remote -u")
-	, ((0, 0x1008ff17), spawn "cmus-remote -n")
-	, ((0, 0x1008ff16), spawn "cmus-remote -p")
+	, ((0, 0x1008ff11), spawn "mpc volume -4")
+	, ((0, 0x1008ff13), spawn "mpc volume +4")
+        , ((0, 0x1008ff14), spawn "mpc toggle")
+        , ((0, 0x1008ff17), spawn "mpc next")
+        , ((0, 0x1008ff16), spawn "mpc prev")
+	, ((0, 0x1008ff15), spawn "mpc stop") 
+	, ((mod4Mask .|. shiftMask, xK_n), scratchpadSpawnActionTerminal "urxvt")
         ]	
