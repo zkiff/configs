@@ -30,4 +30,6 @@ setxkbmap de -variant nodeadkeys
 
 pidgin &
 
+dropboxd &
+
 exec xmonad
