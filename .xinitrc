@@ -14,6 +14,8 @@ wicd-client &
 
 pidgin &
 
+dropboxd &
+
 exec xmonad
 
 
