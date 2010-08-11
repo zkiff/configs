@@ -46,6 +46,7 @@ main = do
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s") -- print --> screenshot
         , ((0, xK_Print), spawn "scrot")
         , ((mod4Mask .|. shiftMask, xK_Home), fullFloatFocused)
+	, ((0, 0x1008ff12), spawn "mpc volume 0")
         , ((0, 0x1008ff18), spawn "mpc volume -4")
         , ((0, 0x1008ff19), spawn "mpc volume +4")
         , ((0, 0x1008ff14), spawn "mpc toggle")
