@@ -1,7 +1,7 @@
 echo
-date
+ddate
 echo
-fortune
+fortune -s
 echo
 
 complete -cf sudo
